@@ -25,7 +25,7 @@ package com.fttsh.apps.mobile.g.model.vo
 		//
 		//--------------------------------------------------------------------------
 		[Id]
-		[Column(name="POICategoryID")]
+//		[Column(name="POICategoryID")]
 		public var POICategoryID:String;
 		
 		[Column(name="POICategoryNameChinese")]
@@ -39,6 +39,7 @@ package com.fttsh.apps.mobile.g.model.vo
 		
 		[Column(name="POICategoryNameImage")]
 		public var POICategoryNameImage:Object;
+		
 		//----------------------------------
 		//  CONSTANTS
 		//----------------------------------

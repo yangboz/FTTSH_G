@@ -1,35 +1,28 @@
-package com.fttsh.apps.mobile.g.model.vo
+package com.fttsh.apps.mobile.g.views
 {
 	//--------------------------------------------------------------------------
 	//
 	//  Imports
 	//
 	//--------------------------------------------------------------------------
-	[Bindable]
-	[Table(name="NeighborhoodInfo")]
+	import org.robotlegs.mvcs.Mediator;
+	
+	
 	/**
-	 * NeighborhoodInfo.as class.   	
-	 * @author knight.zhou
+	 * FavoritesMediator.as class.   	
+	 * @author yangboz
 	 * @langVersion 3.0
 	 * @playerVersion 9.0
-	 * Created Jul 21, 2010 1:46:26 PM
+	 * Created Nov 25, 2010 5:04:14 PM
 	 */   	 
-	public class NeighborhoodInfo
+	public class FavoritesMediator extends Mediator
 	{		
 		//--------------------------------------------------------------------------
 		//
 		//  Variables
 		//
 		//--------------------------------------------------------------------------
-		[Id]
-		[Column(name="NeighborhoodInfoID")]
-		public var NeighborhoodInfoID:int;
 		
-		[Column(name="NeighborhoodName")]
-		public var NeighborhoodName:String;
-		
-		[Column(name="NeighborhoodImage")]
-		public var NeighborhoodImage:String;
 		//----------------------------------
 		//  CONSTANTS
 		//----------------------------------
@@ -51,6 +44,11 @@ package com.fttsh.apps.mobile.g.model.vo
 		//  Constructor
 		//
 		//--------------------------------------------------------------------------
+		public function FavoritesMediator()
+		{
+			//TODO: implement function
+			super();
+		}     	
 		//--------------------------------------------------------------------------
 		//
 		//  Public methods

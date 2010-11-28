@@ -18,6 +18,5 @@ package com.fttsh.apps.mobile.g.service
 		function load():void;
 		function save(value:Object):void;
 		function remove(value:Object):void;
-		function findAll():Vector;
 	}
 }

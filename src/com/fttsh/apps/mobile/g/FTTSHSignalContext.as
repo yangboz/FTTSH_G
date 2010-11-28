@@ -6,8 +6,16 @@ package com.fttsh.apps.mobile.g
 	//
 	//--------------------------------------------------------------------------
 	import com.fttsh.apps.mobile.g.model.SqliteModel;
-	import com.fttsh.apps.mobile.g.service.SqliteService;
+	import com.fttsh.apps.mobile.g.model.vo.POIInfo;
 	import com.fttsh.apps.mobile.g.service.ISqliteService;
+	import com.fttsh.apps.mobile.g.service.SqliteService;
+	import com.fttsh.apps.mobile.g.views.ApplicationMediator;
+	import com.fttsh.apps.mobile.g.views.GuideMediator;
+	import com.fttsh.apps.mobile.g.views.GuideView;
+	import com.fttsh.apps.mobile.g.views.POIInfoMediator;
+	import com.fttsh.apps.mobile.g.views.POIInfoView;
+	import com.fttsh.apps.mobile.g.views.SearchMediator;
+	import com.fttsh.apps.mobile.g.views.SearchView;
 	
 	import flash.display.DisplayObjectContainer;
 	
@@ -71,7 +79,11 @@ package com.fttsh.apps.mobile.g
 			
 			//commands
 			
-			//views
+			//views and mediators
+			mediatorMap.mapView(FTTSH_G,ApplicationMediator);
+			mediatorMap.mapView(GuideView,GuideMediator);
+			mediatorMap.mapView(POIInfoView,POIInfoMediator);
+			mediatorMap.mapView(SearchView,SearchMediator);
 		}
 		//--------------------------------------------------------------------------
 		//

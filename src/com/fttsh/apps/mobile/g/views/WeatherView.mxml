@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+	    width="420"
+	    height="100%"
+>
+	<fx:Script>
+		<![CDATA[
+			import mx.managers.PopUpManager;
+			public static function show(parent:DisplayObject):void
+			{
+				var weatherView:WeatherView = new WeatherView();
+				PopUpManager.addPopUp(weatherView,parent,true);
+				PopUpManager.centerPopUp(weatherView);
+			}
+
+			protected function closeBtn_clickHandler(event:MouseEvent):void
+			{
+				PopUpManager.removePopUp(this);
+			}
+
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+		<s:Button id="closeBtn" label="X" click="closeBtn_clickHandler(event)"/>
+</s:Group>

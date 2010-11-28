@@ -1,35 +1,30 @@
-package com.fttsh.apps.mobile.g.model.vo
+package com.fttsh.apps.mobile.g.views
 {
 	//--------------------------------------------------------------------------
 	//
 	//  Imports
 	//
 	//--------------------------------------------------------------------------
-	[Bindable]
-	[Table(name="NeighborhoodInfo")]
+	import com.fttsh.apps.mobile.g.service.ISqliteService;
+	
+	import org.robotlegs.mvcs.Mediator;
+	
 	/**
-	 * NeighborhoodInfo.as class.   	
-	 * @author knight.zhou
+	 * ApplicationMediator.as class.   	
+	 * @author yangboz
 	 * @langVersion 3.0
 	 * @playerVersion 9.0
-	 * Created Jul 21, 2010 1:46:26 PM
+	 * Created Nov 25, 2010 2:54:36 PM
 	 */   	 
-	public class NeighborhoodInfo
+	public class ApplicationMediator extends Mediator
 	{		
 		//--------------------------------------------------------------------------
 		//
 		//  Variables
 		//
 		//--------------------------------------------------------------------------
-		[Id]
-		[Column(name="NeighborhoodInfoID")]
-		public var NeighborhoodInfoID:int;
-		
-		[Column(name="NeighborhoodName")]
-		public var NeighborhoodName:String;
-		
-		[Column(name="NeighborhoodImage")]
-		public var NeighborhoodImage:String;
+		[Inject]public var view:FTTSH_G;
+		[Inject]public var service:ISqliteService;
 		//----------------------------------
 		//  CONSTANTS
 		//----------------------------------
@@ -51,12 +46,29 @@ package com.fttsh.apps.mobile.g.model.vo
 		//  Constructor
 		//
 		//--------------------------------------------------------------------------
+		public function ApplicationMediator()
+		{
+			//TODO: implement function
+			super();
+		}     	
 		//--------------------------------------------------------------------------
 		//
 		//  Public methods
 		//
 		//--------------------------------------------------------------------------
-		
+		override public function onRegister():void
+		{
+			//
+			this.service.load();
+			//
+			trace(this.view.navigator);
+		}
+		//
+		override public function onRemove():void
+		{
+			//
+			this.service.remove(null);
+		}
 		//--------------------------------------------------------------------------
 		//
 		//  Protected methods
