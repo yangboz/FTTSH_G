@@ -12,6 +12,8 @@ package com.fttsh.apps.mobile.g
 	import com.fttsh.apps.mobile.g.views.ApplicationMediator;
 	import com.fttsh.apps.mobile.g.views.GuideMediator;
 	import com.fttsh.apps.mobile.g.views.GuideView;
+	import com.fttsh.apps.mobile.g.views.HomeMediator;
+	import com.fttsh.apps.mobile.g.views.HomeView;
 	import com.fttsh.apps.mobile.g.views.POIInfoMediator;
 	import com.fttsh.apps.mobile.g.views.POIInfoView;
 	import com.fttsh.apps.mobile.g.views.SearchMediator;
@@ -84,6 +86,7 @@ package com.fttsh.apps.mobile.g
 			mediatorMap.mapView(GuideView,GuideMediator);
 			mediatorMap.mapView(POIInfoView,POIInfoMediator);
 			mediatorMap.mapView(SearchView,SearchMediator);
+			mediatorMap.mapView(HomeView,HomeMediator);
 		}
 		//--------------------------------------------------------------------------
 		//

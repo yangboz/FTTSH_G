@@ -102,8 +102,11 @@ package com.fttsh.apps.mobile.g.views
 			//
 			this._googleMap.removeEventListener(MapEvent.MAP_READY,mapReadyHandler);
 			//
-			this._geoCode.removeEventListener(GeocodingEvent.GEOCODING_SUCCESS,geoCodingSuccessHandler);
-			this._geoCode.removeEventListener(GeocodingEvent.GEOCODING_FAILURE,geoCodingFailureHandler);
+			if(this._geoCode)
+			{
+				this._geoCode.removeEventListener(GeocodingEvent.GEOCODING_SUCCESS,geoCodingSuccessHandler);
+				this._geoCode.removeEventListener(GeocodingEvent.GEOCODING_FAILURE,geoCodingFailureHandler);
+			}
 			//
 			this.view.mapContainer.removeEventListener(ResizeEvent.RESIZE,mapContainerResizeHandler);
 			//

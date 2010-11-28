@@ -9,7 +9,12 @@ package com.fttsh.apps.mobile.g.views
 	import com.fttsh.apps.mobile.g.model.SqliteModel;
 	import com.fttsh.apps.mobile.g.service.ISqliteService;
 	
+	import flash.events.KeyboardEvent;
+	import flash.ui.Keyboard;
+	
 	import org.robotlegs.mvcs.Mediator;
+	
+	import spark.events.IndexChangeEvent;
 	
 	
 	/**
@@ -27,11 +32,6 @@ package com.fttsh.apps.mobile.g.views
 		//
 		//--------------------------------------------------------------------------
 		[Inject]public var view:HomeView;
-		
-		[Inject]public var service:ISqliteService;
-		
-		
-		[Inject]public var model:SqliteModel;
 		//----------------------------------
 		//  CONSTANTS
 		//----------------------------------
@@ -66,15 +66,19 @@ package com.fttsh.apps.mobile.g.views
 		override public function onRegister():void
 		{
 			//
-			this.service.load();
+			this.view.systemManager.stage.addEventListener(KeyboardEvent.KEY_UP, deviceKeyUpHandler);
+			//add the first view when this view is created
+			this.view.myNavigator.pushView(GuideView);
 			//
-			this.addContextListener(SqliteLoadEvent.SQLITE_LOAD_COMPLETE,dataBaseLoadCompleteHandler);
+			this.view.bottomTabBar.addEventListener(IndexChangeEvent.CHANGE,bottomTabBar_changeHandler);
 		}
 		
 		override public function onRemove():void
 		{
 			//
-			this.service.remove(null);
+			this.view.systemManager.stage.removeEventListener(KeyboardEvent.KEY_UP, deviceKeyUpHandler);
+			//
+			this.view.bottomTabBar.removeEventListener(IndexChangeEvent.CHANGE,bottomTabBar_changeHandler);
 		}
 		//--------------------------------------------------------------------------
 		//
@@ -87,9 +91,45 @@ package com.fttsh.apps.mobile.g.views
 		//  Private methods
 		//
 		//--------------------------------------------------------------------------
-		private function dataBaseLoadCompleteHandler(event:SqliteLoadEvent):void
+		//this is required to handle the device back key
+		protected function deviceKeyUpHandler(event:KeyboardEvent):void 
 		{
-			this.view.homeList.dataProvider = this.model.loadedPOICategorys;
+			// TODO Auto-generated method stub
+			var key:uint = event.keyCode;
+			
+			if (key == Keyboard.BACK && this.view.myNavigator.navigationStack.length > 1){
+				this.view.myNavigator.popView();
+			}
+		}
+		//
+		protected function bottomTabBar_changeHandler(event:IndexChangeEvent):void
+		{
+			// TODO Auto-generated method stub
+			switch(this.view.bottomTabBar.selectedIndex)
+			{
+				case 0:
+					if (!(this.view.myNavigator.activeView is GuideView))
+						this.view.myNavigator.pushView(GuideView);
+					break;
+				case 1:
+					if (!(this.view.myNavigator.activeView is NearByView))
+						this.view.myNavigator.pushView(NearByView);
+					break;
+				case 2:
+					if (!(this.view.myNavigator.activeView is SearchView))
+						this.view.myNavigator.pushView(SearchView);
+					break;
+				case 3:
+					if (!(this.view.myNavigator.activeView is FavoritesView))
+						this.view.myNavigator.pushView(FavoritesView);
+					break;
+				case 4:
+					if (!(this.view.myNavigator.activeView is LocationView))
+						this.view.myNavigator.pushView(LocationView);
+					break;
+				default:
+					break;
+			}
 		}
 	}
 	
